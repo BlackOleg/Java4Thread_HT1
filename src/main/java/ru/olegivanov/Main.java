@@ -10,10 +10,7 @@ public class Main {
         for (int i = 0; i < texts.length; i++) {
             texts[i] = generateText("aab", 30_000);
         }
-
         long startTs = System.currentTimeMillis(); // start time
-
-
         for (String text : texts) {
             threads.add(new Thread(() -> {
                 System.out.println(">>>>>Iteration #text is running>>>>>>>");
@@ -38,11 +35,9 @@ public class Main {
                 System.out.println(text.substring(0, 100) + " -> " + maxSize);
             }));
         }
-
         for (Thread thread : threads) {
             thread.start();
             thread.join(); // зависаем, ждём когда поток объект которого лежит в thread завершится
-
         }
         long endTs = System.currentTimeMillis(); // end time
 
